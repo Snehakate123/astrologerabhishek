@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Panchang - Astrologer Abhishek</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .panchang-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        }
+        .panchang-text {
+            flex: 2;
+            font-size: 1.25rem;
+            color: #222;
+            line-height: 1.7;
+            margin-right: 40px;
+        }
+        .panchang-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .panchang-image img {
+            max-width: 350px;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .what-is-panchang-box {
+            max-width: 1400px;
+            margin: 80px auto 0 auto;
+            padding: 48px 40px;
+            background: #fdfaf3;
+            border: 1.5px solid #d2691e;
+            border-radius: 64px;
+            color: #222;
+            font-size: 1.18rem;
+            font-family: 'Poppins', Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        .what-is-panchang-box h2 {
+            text-align: center;
+            color: #a52a2a;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .panchang-today-box {
+            max-width: 1200px;
+            margin: 60px auto 0 auto;
+            padding: 36px 24px 32px 24px;
+            background: #fdfaf3;
+            border: 3px solid #ff7f2a;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            text-align: center;
+        }
+        .panchang-today-box h2 {
+            color: #a52a2a;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.7rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .swastik-icon {
+            font-size: 3rem;
+            color: #a52a2a;
+            margin-bottom: 1.5rem;
+        }
+        .panchang-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: none;
+        }
+        .panchang-table th, .panchang-table td {
+            padding: 18px 12px;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 1.25rem;
+        }
+        .panchang-table th {
+            background: #ff7f2a;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.18rem;
+            border: none;
+        }
+        .panchang-table tr.alt td {
+            background: #f7f7f7;
+        }
+        .panchang-table td {
+            color: #222;
+        }
+        @media (max-width: 900px) {
+            .panchang-container { flex-direction: column; padding: 20px; }
+            .panchang-text { margin-right: 0; margin-bottom: 24px; }
+            .panchang-image { justify-content: center; }
+            .what-is-panchang-box { padding: 24px 10px; border-radius: 32px; }
+            .what-is-panchang-box h2 { font-size: 2rem; }
+            .panchang-today-box { padding: 18px 2px 16px 2px; border-radius: 10px; }
+            .panchang-today-box h2 { font-size: 1.5rem; }
+            .swastik-icon { font-size: 2rem; }
+            .panchang-table th, .panchang-table td { font-size: 1rem; padding: 10px 4px; }
+        }
+        .panchang-today-flex {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            min-height: 100vh;
+        }
+        .panchang-today-box.small-table {
+            flex: 2;
+            max-width: 650px;
+            min-width: 320px;
+            padding: 24px 12px 24px 12px;
+        }
+        .panchang-today-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 32px;
+            height: fit-content;
+            align-self: flex-start;
+        }
+        .panchang-today-image img {
+            max-width: 340px;
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        @media (max-width: 900px) {
+            .panchang-today-flex {
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+            }
+            .panchang-today-image img {
+                max-width: 90vw;
+            }
+            .panchang-today-box.small-table {
+                max-width: 98vw;
+            }
+            .panchang-today-image {
+                position: static;
+                top: auto;
+            }
+        }
+        .faq-section {
+            max-width: 1200px;
+            margin: 60px auto 0 auto;
+            padding: 36px 24px 32px 24px;
+            background: #fdfaf3;
+            border: 3px solid #ff7f2a;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        }
+        .faq-title {
+            text-align: center;
+            color: #a52a2a;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.7rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #f3e2c7;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 18px 24px;
+            background: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: #a52a2a;
+            font-size: 1.1rem;
+        }
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #a52a2a;
+        }
+        .faq-answer {
+            display: none;
+            padding: 24px 32px 24px 32px;
+            font-size: 1.15rem;
+            color: #222;
+            background: #fff8ef;
+            border-top: 1px solid #f3e2c7;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .faq-section { padding: 18px 2px 16px 2px; border-radius: 10px; }
+            .faq-title { font-size: 1.5rem; }
+            .faq-question { font-size: 1rem; padding: 14px 10px; }
+            .faq-answer { font-size: 1rem; padding: 14px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+    </header>
+    <main>
+        <div class="what-is-panchang-box">
+            <h2>What Is Panchang?</h2>
+            <p>Panchang as the name suggests comprises 5 aspects. It is an astrological calendar that is aligned with the Hindu calendar. One of the prominent Vedic astrology concepts, this calendar shows the position and movement of planets on a daily basis. It is helpful to determine muhurat, tithi etc. that help to know about festivals, vrats and other important events like eclipses. It is recommended to initiate a task considering the panchang. Every day there are shubh muhurtas as well as phases like the rahu kaal. If one plans the day keeping in mind the panchang, the chances of success of the person increase multifold. Since minor changes in muhurat can impact the outcome of the work done during that duration, it is important to refer to an panchang developed by a reliable astrologer since it is based on minute calculations.</p>
+            <p>Panchang covers various details ranging from time of sunrise to nakshatra. But the primary 5 aspects of Panchang are – day of the week (vaar); tithi or the lunar day; nakshatra or the constellation; yoga; and karan.</p>
+        </div>
+        <div class="panchang-container">
+            <div class="panchang-text">
+                <h1>Free Panchang</h1>
+                <p>Indian Vedic Astrology is based on precisely made calculations and for centuries it has helped us to predict disruptive changes much ahead of time. A crucial element of these calculations is Panchang which, just like any other calendar, tells about the tithi, vaar and planetary positions. It is a much detailed calendar that throws light on important information about the day. Let's understand the usage of Panchang in detail.</p>
+            </div>
+            <div class="panchang-image">
+                <img src="assets/panchang-image.png.png" alt="Panchang Calendar">
+            </div>
+        </div>
+        <div class="panchang-today-flex">
+            <div class="panchang-today-box small-table">
+                <h2>Panchang For Today</h2>
+                <div class="swastik-icon">&#x1F549;</div>
+                <table class="panchang-table">
+                    <thead>
+                        <tr>
+                            <th>TITLE</th>
+                            <th>VALUE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Sun Rise Time</td><td>05:31:59</td></tr>
+                        <tr class="alt"><td>Sun Set Time</td><td>19:03:59</td></tr>
+                        <tr><td>Tithi</td><td>Dashami - 01:10:19</td></tr>
+                        <tr class="alt"><td>Paksha</td><td>Krishna Paksha</td></tr>
+                        <tr><td>Moon Sign</td><td>Aquarius</td></tr>
+                        <tr class="alt"><td>Karana</td><td>Vanij - Vishti</td></tr>
+                        <tr><td>Ritu</td><td>Grishma Ritu (Summer)</td></tr>
+                        <tr class="alt"><td>Yoga</td><td>Vishakumbha - 18:08:00</td></tr>
+                        <tr><td>Nakshatra</td><td>Purva Bhadrapada - 22/05/2025 - 18:4:15</td></tr>
+                        <tr class="alt"><td>Rahu Kaal</td><td>13:59 - 15:40</td></tr>
+                        <tr><td>Kulika</td><td>08:54 - 10:36</td></tr>
+                        <tr class="alt"><td>Yamgandam</td><td>05:31 - 07:13</td></tr>
+                        <tr><td>Abhijit Muhurat</td><td>11:50 - 12:45</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panchang-today-image">
+                <img src="assets/panchang-illustration.png.png" alt="Panchang Illustration" />
+            </div>
+        </div>
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question"><span>1. What exactly is a Panchang?</span><span class="faq-toggle">-</span></div>
+                    <div class="faq-answer">Panchang is your go-to Hindu calendar. It's not just about dates; it's a detailed guide that tells you about auspicious times, festivals, and planetary movements. Astrologers and pandits have referred to it for centuries to suggest favourable time and date to perform important functions of life.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>2. What kind of information does a Panchang include?</span><span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">A Panchang includes tithi (lunar day), vaar (day of the week), nakshatra (constellation), yoga, karan, sunrise/sunset times, and other astrological data.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>3. How can a Panchang help me in my daily life?</span><span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">It helps you choose the best times for important activities, avoid inauspicious periods, and plan for festivals, rituals, and personal milestones.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>4. Can I trust the predictions in Panchang?</span><span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Panchang is based on ancient astrological calculations. While it is a trusted guide, always use your own judgment and consult experts for major decisions.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>5. How do I make sense of all the information in a Panchang?</span><span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">You can refer to guides or consult an astrologer to understand the terms and how to use the Panchang for your benefit.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>6. Can I use a Panchang for special occasions like weddings or business launches?</span><span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Yes, Panchang is widely used to find auspicious dates for weddings, business launches, housewarmings, and other important events.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>7. Do different regions have their own versions of the Panchang?</span><span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Yes, there are regional variations in Panchang based on local traditions and astronomical calculations.</div>
+                </div>
+            </div>
+        </div>
+        <script>
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const toggle = item.querySelector('.faq-toggle');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-toggle').textContent = '+';
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    toggle.textContent = item.classList.contains('active') ? '-' : '+';
+                });
+            });
+        });
+        </script>
+    </main>
+</body>
+</html> 

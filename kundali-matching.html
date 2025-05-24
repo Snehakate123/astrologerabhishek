@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Kundali Matching - Astrologer Abhishek</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .kundali-matching-hero {
+            background: linear-gradient(to right, #ff8c00, #ffc107); /* Orange gradient background */
+            padding: 80px 20px;
+            color: #8B0000; /* Dark Red text color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .kundali-matching-content {
+            max-width: 600px;
+        }
+        .kundali-matching-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        .kundali-matching-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .stat-icon {
+            font-size: 2rem;
+        }
+        .order-button {
+            display: inline-block;
+            background: #fff;
+            color: #d2691e; /* Chocolate color */
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .order-button:hover {
+            background: #f0f0f0;
+        }
+        .kundali-matching-image img {
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Kundali Matching Form Styles */
+        .form-section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        }
+        .form-section h2 {
+            text-align: center;
+            color: #a52a2a;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .form-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .partner-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        .partner-details h3 {
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="time"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #d2691e; /* Chocolate */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 30px;
+        }
+        .submit-button:hover {
+            background: #a0522d; /* Sienna */
+        }
+
+        /* Results Section Styles */
+        .results-section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fdfaf3;
+            border: 3px solid #ff7f2a;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            text-align: center;
+            display: none; /* Hidden by default */
+        }
+        .results-section h2 {
+            color: #a52a2a;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .total-score,
+        .individual-scores {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+        }
+        .total-score h3 {
+            color: #d2691e;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .total-score p {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #8B0000;
+        }
+        .individual-scores h3 {
+            color: #a52a2a;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            text-align: left;
+        }
+        .score-item {
+            background: #fff8ef;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #f3e2c7;
+        }
+        .score-item strong {
+            color: #d2691e;
+        }
+        .analysis-text {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #333;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .kundali-matching-hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .kundali-matching-content h1 {
+                font-size: 2.5rem;
+            }
+            .kundali-matching-content p {
+                font-size: 1rem;
+            }
+            .stats {
+                justify-content: center;
+            }
+            .kundali-matching-image img {
+                max-width: 80%;
+            }
+            .form-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .partner-details {
+                min-width: unset;
+                width: 100%;
+            }
+            .form-section h2,
+            .results-section h2 {
+                font-size: 2rem;
+            }
+            .total-score h3 {
+                font-size: 1.5rem;
+            }
+            .total-score p {
+                font-size: 2rem;
+            }
+            .individual-scores h3 {
+                font-size: 1.2rem;
+            }
+            .scores-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+            .analysis-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="logo">
+                <img src="./assets/astrologer-abhishek-circle.png" alt="Astrologer Abhishek Logo" class="nav-logo" width="50" height="50">
+            </div>
+            <div class="nav-links" role="menubar">
+                <a href="index.html#home" role="menuitem" aria-label="Go to Home section">Home</a>
+                <a href="index.html#about" role="menuitem" aria-label="Go to About section">About</a>
+                <a href="index.html#services" role="menuitem" aria-label="Go to Services section">Services</a>
+                <a href="index.html#gallery" role="menuitem" aria-label="Go to Gallery section">Gallery</a>
+                <a href="index.html#blog" role="menuitem" aria-label="Go to Blog section">Blog</a>
+                <a href="index.html#contact" role="menuitem" aria-label="Go to Contact section">Contact</a>
+                <a href="tel:+918971474507" class="phone-number" role="menuitem" aria-label="Call us at +91 897 147 4507">Call: +91 897 147 4507</a>
+            </div>
+            <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="kundali-matching-hero">
+            <div class="kundali-matching-content">
+                <h1>Kundali Milan | Kundali Matching |<br>Horoscope Matching For Marriage</h1>
+                <p>(Find Your Perfect Match With Couple Match Making Kundali)</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">&#128578;</span> <!-- Happy face icon -->
+                        <span>1 lakh+<br>Happy Customers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">&#9989;</span> <!-- Checkmark icon -->
+                        <span>100%<br>Reliable Predictions</span>
+                    </div>
+                </div>
+                <a href="#" class="order-button">Order Now Premium Personalised Kundali Matching &#8594;</a>
+            </div>
+            <div class="kundali-matching-image">
+                <img src="assets/couple-match-making-kundali.png" alt="Couple Match Making Kundali Book">
+            </div>
+        </section>
+
+        <!-- Form and Results sections previously added -->
+        <section id="kundali-matching-form" class="form-section">
+            <h2>Enter Partner Details</h2>
+            <form id="kundali-matching-form-element">
+                <div class="form-container">
+                    <div class="partner-details">
+                        <h3>Partner 1 Details</h3>
+                        <div class="form-group">
+                            <label for="partner1-name">Full Name</label>
+                            <input type="text" id="partner1-name" placeholder="Enter full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="partner1-dob">Date of Birth</label>
+                            <input type="date" id="partner1-dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="partner1-tob">Time of Birth</label>
+                            <input type="time" id="partner1-tob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="partner1-pob">Place of Birth</label>
+                            <input type="text" id="partner1-pob" placeholder="Enter place of birth" required>
+                        </div>
+                    </div>
+                    <div class="partner-details">
+                        <h3>Partner 2 Details</h3>
+                        <div class="form-group">
+                            <label for="partner2-name">Full Name</label>
+                            <input type="text" id="partner2-name" placeholder="Enter full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="partner2-dob">Date of Birth</label>
+                            <input type="date" id="partner2-dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="partner2-tob">Time of Birth</label>
+                            <input type="time" id="partner2-tob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="partner2-pob">Place of Birth</label>
+                            <input type="text" id="partner2-pob" placeholder="Enter place of birth" required>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">Calculate Compatibility</button>
+            </form>
+        </section>
+
+        <section id="kundali-matching-results" class="results-section">
+            <h2>Compatibility Results</h2>
+            <div class="score-board">
+                <div class="total-score">
+                    <h3>Total Score</h3>
+                    <p id="total-score">0/36</p>
+                </div>
+                <div class="individual-scores">
+                    <h3>Individual Scores (Gunas)</h3>
+                    <div class="scores-grid">
+                        <div class="score-item"><strong>Varna:</strong> <span id="varna-score">0</span></div>
+                        <div class="score-item"><strong>Vashya:</strong> <span id="vashya-score">0</span></div>
+                        <div class="score-item"><strong>Tara:</strong> <span id="tara-score">0</span></div>
+                        <div class="score-item"><strong>Yoni:</strong> <span id="yoni-score">0</span></div>
+                        <div class="score-item"><strong>Graha Maitri:</strong> <span id="graha-maitri-score">0</span></div>
+                        <div class="score-item"><strong>Gana:</strong> <span id="gana-score">0</span></div>
+                        <div class="score-item"><strong>Bhakoot:</strong> <span id="bhakoot-score">0</span></div>
+                        <div class="score-item"><strong>Nadi:</strong> <span id="nadi-score">0</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="analysis-text" id="compatibility-analysis">
+                <!-- Analysis text will be inserted here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo" class="main-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="./assets/astrologer-abhishek-circle.png" alt="Astrologer Abhishek Logo" width="150" height="150">
+                </div>
+                <div class="footer-links">
+                    <a href="/help" aria-label="Help and Support">Help</a>
+                    <a href="/terms" aria-label="Terms and Services">Terms & Services</a>
+                    <a href="/privacy" aria-label="Privacy Policy">Privacy Policy</a>
+                    <a href="/refund" aria-label="Refund Policy">Refund Policy</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon twitter" aria-label="Follow us on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon youtube" aria-label="Subscribe to our YouTube channel">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon linkedin" aria-label="Connect with us on LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com/abhishek_rathod_909" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="dmca-badge">
+                </div>
+                <p class="copyright">All rights reserved by © Astro Arun Pandit</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- WhatsApp Chat Button -->
+    <a href="https://wa.me/918971474507" class="whatsapp-chat" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+        <div class="chat-text">
+            Chat with us
+        </div>
+        <div class="chat-icon">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iIzI1QzU2MCIgZD0iTTI0IDRDMTIuOTU0IDQgNCAxMi45NTQgNCAyNGMwIDUuNTIzIDIuMTA3IDEwLjUzOCA1LjU2NiAxNC4zMDdMMCA0OGw5LjU4Ni01LjU2NkMxMy40NjIgNDEuODkzIDE4LjQ3NyA0NCAyNCA0NGMxMS4wNDYgMCAyMC04Ljk1NCAyMC0yMFMzNS4wNDYgNCAyNCA0eiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0zNS4xOTMgMjguMDQ0Yy0uMzc4LS4xODktMS43NTctLjg3Ni0yLjAzLS45NzUtLjI3My0uMDk5LS40NzEtLjE0OC0uNjcuMTQ4LS4xOTguMjk3LS43NjcgLjk3NS0uOTQgMS4xNzItLjE3My4xOTctLjM0Ni4yMjItLjY0My4wNzQtLjI5Ny0uMTQ4LTEuMjU1LS40NjMtMi4zOS0xLjQ3NS0uODc2LS43ODItMS40NjgtMS43NS0xLjY0LTIuMDQ3LS4xNzMtLjI5Ny0uMDE4LS40NTguMTMtLjYwNi4xMzQtLjEzMy4yOTctLjM0Ni40NDYtLjUyMS4xNDgtLjE3NS4xOTgtLjI5Ny4yOTctLjQ5Ni4wOTktLjE5OC4wNDktLjM3MS0uMDI1LS41MjEtLjA3NC0uMTQ4LS42Ny0xLjYxMS0uOTE4LTIuMjA2LS4yNDgtLjU5NS0uNTAxLS41MTQtLjY3LS41MjEtLjE3LS4wMDctLjM2NC0uMDA3LS41NTktLjAwNy0uMTk4IDAtLjUyMS4wNzQtLjc5NS4zNzEtLjI3My4yOTctMS4wNCAxLjAxNi0xLjA0IDIuNDc1IDAgMS40NTkgMS4wNTggMi44NzQgMS4yMDYgMy4wNzQuMTQ4LjE5OCAyLjA5NSAzLjE2IDUuMDc3IDQuNDI4IDIuOTgyIDEuMjY4IDIuOTgyLjg4IDMuNTE4Ljc4OC41MzYtLjA1MiAxLjg0Ni0uNzU0IDIuMTA3LTEuNDgzLjI2LS43MjkuMjYtMS4zNTYuMTgyLTEuNDgzLS4wNzQtLjEyNy0uMjczLS4xOTgtLjU3LS4zNDd6Ii8+PC9zdmc+" alt="WhatsApp Chat" width="30" height="30">
+        </div>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Moon Sign Calculator</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming a shared stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        /* Basic styling inferred from the image and likely shared styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f6f1; /* Light background color */
+            color: #222;
+        }
+        .header-section {
+            background-color: #8B0000; /* Dark red background */
+            padding: 40px 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .content-section {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #8B0000; /* Dark red text */
+            margin-top: 30px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .content-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background-color: #ff7f2a; /* Orange accent */
+            margin: 10px auto 0;
+        }
+        .content-section p {
+            font-size: 1.18rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the calculator box (similar to Nakshatra) */
+         .calculator-box {
+            background: #fff;
+            border: 2px solid #ff7f2a;
+            border-radius: 24px;
+            max-width: 420px;
+            margin: 40px auto;
+            padding: 32px 28px 28px 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            text-align: left; /* Align form labels to the left */
+        }
+         .calculator-box h2 {
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-align: center; /* Center calculator box title */
+        }
+         .calculator-form label {
+            display: block; /* Make labels block elements for better spacing */
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #8B0000;
+            font-weight: 600;
+        }
+         .calculator-form input {
+            width: calc(100% - 24px); /* Adjust width for padding */
+            padding: 10px 12px;
+            border: 1.5px solid #e0bfae;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Poppins', Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+         .calculator-form button {
+            margin-top: 10px;
+            background: #8B0000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%; /* Make button full width */
+        }
+         .calculator-form button:hover {
+            background: #a52a2a;
+        }
+        .calculator-result {
+             margin-top: 24px;
+             text-align: center; /* Center the result text */
+        }
+         .calculator-result p {
+            color: #a52a2a;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+             .content-section p {
+                font-size: 1rem;
+            }
+             .calculator-box {
+                padding: 20px;
+            }
+             .calculator-box h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1>MoonSign Calculator</h1>
+    </div>
+
+    <div class="content-section">
+        <h2>What Is A Moon Sign Calculator?</h2>
+        <p>The Moon Sign Calculator helps you discover your moon sign by analysing the position of the moon at the exact time of your birth. Unlike your sun sign, which represents your outward personality, your moon sign reveals your inner emotional world, desires, and instincts. By understanding your moon sign, you can gain deeper insights into your emotional nature, reactions, and relationships.</p>
+
+        <h2>Why Is Your Moon Sign Important?</h2>
+        <p>Your moon sign is a vital component of your astrological profile, offering a window into your subconscious mind, feelings, and inner needs. While your sun sign governs how you express yourself to the world, your moon sign governs how you feel inside and react emotionally. Understanding your moon sign can help you make sense of your moods, emotional triggers, and how you nurture yourself and others.</p>
+
+        <!-- Calculator Section -->
+        <div class="calculator-box">
+             <h2>Calculate Your Moon Sign</h2>
+             <form id="moon-sign-form" class="calculator-form">
+                <label for="moon-name">Name:</label>
+                <input type="text" id="moon-name" name="moon-name" required>
+
+                <label for="moon-dob">Date of Birth:</label>
+                <input type="date" id="moon-dob" name="moon-dob" required>
+
+                <label for="moon-tob">Time of Birth:</label>
+                <input type="time" id="moon-tob" name="moon-tob" required>
+
+                <label for="moon-pob">Place of Birth:</label>
+                <input type="text" id="moon-pob" name="moon-pob" required>
+
+                <button type="submit">Get Moon Sign</button>
+             </form>
+            <div id="moon-sign-result" class="calculator-result" style="display: none;">
+                <p id="moon-sign-output"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Placeholder function for Moon Sign Calculation
+        // You will need to add the actual logic here.
+        function calculateMoonSign() {
+            const name = document.getElementById("moon-name").value;
+            const dob = document.getElementById("moon-dob").value;
+            const tob = document.getElementById("moon-tob").value;
+            const pob = document.getElementById("moon-pob").value;
+
+            // --- Add your Moon Sign calculation logic here ---
+            // This will likely involve using the DOB, TOB, and POB
+            // to determine the Moon's position at the time of birth
+            // and mapping that position to a Moon Sign.
+            // For now, we'll use a placeholder result.
+
+            const calculatedMoonSign = "Calculated Moon Sign Goes Here"; // Replace with actual calculation
+            // ----------------------------------------------------
+
+            document.getElementById("moon-sign-output").innerText = `Name: ${name}, Moon Sign: ${calculatedMoonSign}`;
+            document.getElementById("moon-sign-result").style.display = 'block';
+        }
+
+        // Add event listener to the form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const moonSignForm = document.getElementById('moon-sign-form');
+            moonSignForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                calculateMoonSign();
+            });
+        });
+
+    </script>
+</body>
+</html> 

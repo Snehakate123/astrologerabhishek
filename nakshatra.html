@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Nakshatra - Astrologer Abhishek</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        .nakshatra-section {
+            margin: 60px auto 0 auto;
+            max-width: 1200px;
+            background: #f9f6f1;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+        .nakshatra-header {
+            background: #8B0000;
+            padding: 48px 0 36px 0;
+            text-align: center;
+        }
+        .nakshatra-header h1 {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .nakshatra-content {
+            padding: 40px 32px 48px 32px;
+            text-align: center;
+        }
+        .nakshatra-title {
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .nakshatra-desc {
+            color: #222;
+            font-size: 1.18rem;
+            max-width: 900px;
+            margin: 0 auto 2.5rem auto;
+        }
+        .nakshatra-calc-box {
+            background: #fff;
+            border: 2px solid #ff7f2a;
+            border-radius: 24px;
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 32px 28px 28px 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .nakshatra-calc-box h2 {
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+        .nakshatra-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .nakshatra-form label {
+            text-align: left;
+            font-size: 1rem;
+            color: #8B0000;
+            font-weight: 600;
+        }
+        .nakshatra-form input {
+            padding: 10px 12px;
+            border: 1.5px solid #e0bfae;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        .nakshatra-form button {
+            margin-top: 10px;
+            background: #8B0000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .nakshatra-form button:hover {
+            background: #a52a2a;
+        }
+        .nakshatra-result {
+            margin-top: 24px;
+        }
+        .nakshatra-result p {
+            color: #a52a2a;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 0;
+        }
+        .nakshatra-list-section {
+            margin: 60px auto 40px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        .nakshatra-list-title {
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .nakshatra-list {
+            list-style: none;
+            padding: 0;
+            columns: 3;
+            column-gap: 20px;
+            text-align: left;
+        }
+        .nakshatra-list li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            color: #222;
+        }
+        @media (max-width: 900px) {
+            .nakshatra-header { padding: 28px 0 18px 0; }
+            .nakshatra-header h1 { font-size: 2rem; }
+            .nakshatra-content { padding: 18px 4px 24px 4px; }
+            .nakshatra-title { font-size: 1.2rem; }
+            .nakshatra-calc-box { padding: 16px 4px 14px 4px; max-width: 98vw; }
+            .nakshatra-result p { font-size: 1.2rem; }
+            .nakshatra-list-section { margin: 40px auto 20px auto; }
+            .nakshatra-list-title { font-size: 1.5rem; }
+            .nakshatra-list { columns: 2; }
+            .nakshatra-list li { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="nakshatra-section">
+            <div class="nakshatra-header">
+                <h1>Nakshatra Calculator</h1>
+            </div>
+            <div class="nakshatra-content">
+                <h2 class="nakshatra-title">Discover Your Nakshatra: Unlock The Secrets Of Your Cosmic Blueprint</h2>
+                <p class="nakshatra-desc"><b>Nakshatras</b>, also known as lunar mansions, are 27 unique divisions of the sky that the moon passes through on its journey. Each Nakshatra holds deep insights into your personality, life path, and potential. In Vedic astrology, your Nakshatra plays a key role in shaping your destiny, influencing your thoughts, actions, and relationships.</p>
+                <div class="nakshatra-calc-box">
+    <h2>Nakshatra Calculator</h2>
+                    <form class="nakshatra-form">
+                        <label for="nakshatra-name">Name</label>
+                        <input type="text" id="nakshatra-name" name="nakshatra-name" placeholder="Name" required>
+                        <label for="nakshatra-dob">Date of Birth</label>
+                        <input type="date" id="nakshatra-dob" name="nakshatra-dob" required>
+                        <label for="nakshatra-tob">Time of Birth</label>
+                        <input type="time" id="nakshatra-tob" name="nakshatra-tob" required>
+                        <label for="nakshatra-pob">Place of Birth</label>
+                        <input type="text" id="nakshatra-pob" name="nakshatra-pob" placeholder="Place of Birth" required>
+                        <button type="submit">Calculate Nakshatra</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="nakshatra-list-section">
+            <h2 class="nakshatra-list-title">List of 27 Nakshatras</h2>
+            <ul class="nakshatra-list">
+                <li>Ashwini</li>
+                <li>Bharani</li>
+                <li>Krittika</li>
+                <li>Rohini</li>
+                <li>Mrigashira</li>
+                <li>Ardra</li>
+                <li>Punarvasu</li>
+                <li>Pushya</li>
+                <li>Ashlesha</li>
+                <li>Magha</li>
+                <li>Purva Phalguni</li>
+                <li>Uttara Phalguni</li>
+                <li>Hasta</li>
+                <li>Chitra</li>
+                <li>Swati</li>
+                <li>Vishakha</li>
+                <li>Anuradha</li>
+                <li>Jyeshtha</li>
+                <li>Mula</li>
+                <li>Purva Ashadha</li>
+                <li>Uttara Ashadha</li>
+                <li>Shravana</li>
+                <li>Dhanishta</li>
+                <li>Shatabhisha</li>
+                <li>Purva Bhadrapada</li>
+                <li>Uttara Bhadrapada</li>
+                <li>Revati</li>
+            </ul>
+        </div>
+        <div class="nakshatra-result" style="display: none;">
+            <p id="nakshatra-output"></p>
+        </div>
+    </main>
+    <script>
+    const nakshatras = [
+      "Ashwini", "Bharani", "Krittika", "Rohini", "Mrigashirsha", "Ardra",
+      "Punarvasu", "Pushya", "Ashlesha", "Magha", "Purva Phalguni", "Uttara Phalguni",
+      "Hasta", "Chitra", "Swati", "Vishakha", "Anuradha", "Jyeshtha", "Mula",
+      "Purva Ashadha", "Uttara Ashadha", "Shravana", "Dhanishta", "Shatabhisha",
+      "Purva Bhadrapada", "Uttara Bhadrapada", "Revati"
+    ];
+
+    function calculateNakshatra() {
+      const name = document.getElementById("nakshatra-name").value;
+      const dob = document.getElementById("nakshatra-dob").value;
+      const tob = document.getElementById("nakshatra-tob").value;
+
+      const date = new Date(`${dob}T${tob}`);
+      const timeInMs = date.getTime();
+      const moonCycle = 27.321661 * 24 * 60 * 60 * 1000; // Moon's sidereal period in ms
+
+      const base = new Date('2000-01-01T00:00:00').getTime(); // Reference time
+      const moonPosition = ((timeInMs - base) % moonCycle) / moonCycle;
+
+      const nakshatraIndex = Math.floor(moonPosition * 27);
+      const nakshatra = nakshatras[nakshatraIndex];
+
+      document.getElementById("nakshatra-output").innerText = `Name: ${name}, Nakshatra: ${nakshatra}`;
+       document.querySelector('.nakshatra-result').style.display = 'block';
+    }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const nakshatraForm = document.querySelector('.nakshatra-form');
+            nakshatraForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                calculateNakshatra();
+            });
+        });
+
+    </script>
+</body>
+</html> 

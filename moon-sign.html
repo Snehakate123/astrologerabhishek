@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moon Sign Calculator</title>
+  <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f6f1; /* Light background color */
+        color: #222;
+    }
+    .header-section {
+        background-color: #8B0000; /* Dark red background */
+        padding: 40px 20px;
+        text-align: center;
+        color: #fff;
+    }
+    .header-section h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0;
+    }
+    .content-section {
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .content-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: #8B0000; /* Dark red text */
+        margin-top: 30px;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    .content-section h2::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 2px;
+        background-color: #ff7f2a; /* Orange accent */
+        margin: 10px auto 0;
+    }
+    .content-section p {
+        font-size: 1.18rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 50px auto;
+      border: 2px solid #fcae7b;
+      border-radius: 15px;
+      padding: 30px;
+      background: #fff;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background: #8a0606;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #6a0404;
+    }
+    .form-container h2 {
+      text-align: center;
+      color: #8a0606;
+      border-bottom: 2px solid #fcae7b;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+      padding: 15px;
+      border-radius: 8px;
+      background: #fff8f0;
+    }
+     @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+             .content-section p {
+                font-size: 1rem;
+            }
+             .form-container {
+                padding: 20px;
+            }
+             .form-container h2 {
+                font-size: 1.5rem;
+            }
+        }
+  </style>
+</head>
+<body>
+  <div class="header-section">
+      <h1>MoonSign Calculator</h1>
+  </div>
+
+  <div class="content-section">
+      <h2>How Does The Moon Sign Calculator Work?</h2>
+      <p>The Moon Sign Calculator uses your date, time, and place of birth to determine the exact position of the moon at the moment you were born. This position corresponds to one of the 12 zodiac signs, each of which reflects a different emotional energy. Simply enter your birth details, and the calculator will reveal your moon sign along with a detailed explanation of its significance.</p>
+
+      <h2>How Is The Moon Sign Different From The Sun Sign?</h2>
+      <p>The sun sign represents your core identity, ego, and how you present yourself to the world. The moon sign, on the other hand, governs your emotions, intuition, and inner feelings. While your sun sign shows how you pursue goals and express yourself, your moon sign reveals how you process emotions and seek comfort. This section helps users understand the key differences and why knowing both signs is essential for a full understanding of their astrological profile.</p>
+
+      <h2>What Is A Moon Sign Calculator?</h2>
+      <p>The Moon Sign Calculator helps you discover your moon sign by analysing the position of the moon at the exact time of your birth. Unlike your sun sign, which represents your outward personality, your moon sign reveals your inner emotional world, desires, and instincts. By understanding your moon sign, you can gain deeper insights into your emotional nature, reactions, and relationships.</p>
+
+      <h2>Why Is Your Moon Sign Important?</h2>
+      <p>Your moon sign is a vital component of your astrological profile, offering a window into your subconscious mind, feelings, and inner needs. While your sun sign governs how you express yourself to the world, your moon sign governs how you feel inside and react emotionally. Understanding your moon sign can help you make sense of your moods, emotional triggers, and how you nurture yourself and others.</p>
+
+      <!-- Calculator Section -->
+      <div class="form-container">
+        <h2>Calculate Your Moon Sign</h2>
+
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="date" id="dob" required />
+        <input type="time" id="tob" required />
+        <input type="text" id="pob" placeholder="Place of Birth" required />
+        <button onclick="calculateMoonSign()">Get Moon Sign</button>
+
+        <div class="result" id="result"></div>
+      </div>
+  </div>
+
+  <script>
+    const moonSigns = [
+      "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+      "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"
+    ];
+
+    function calculateMoonSign() {
+      const name = document.getElementById("name").value;
+      const dob = document.getElementById("dob").value;
+      const tob = document.getElementById("tob").value;
+      const pob = document.getElementById("pob").value;
+
+      if (!name || !dob || !tob || !pob) {
+        document.getElementById("result").innerText = "Please fill in all fields.";
+        return;
+      }
+
+      const dateTime = new Date(`${dob}T${tob}`);
+      const ms = dateTime.getTime();
+      const moonCycle = 27.321661 * 24 * 60 * 60 * 1000; // Moon sidereal cycle in ms
+
+      const base = new Date('2000-01-01T00:00:00').getTime();
+      const moonPosition = ((ms - base) % moonCycle + moonCycle) % moonCycle;
+      const moonFraction = moonPosition / moonCycle;
+
+      const moonLongitude = moonFraction * 360;
+      const signIndex = Math.floor(moonLongitude / 30); // Each sign is 30 degrees
+      const moonSign = moonSigns[signIndex];
+
+      document.getElementById("result").innerText = 
+        `Name: ${name}\nMoon Sign: ${moonSign}`;
+    }
+  </script>
+</body>
+</html> 
